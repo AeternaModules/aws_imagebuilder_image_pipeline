@@ -48,11 +48,11 @@ output "imagebuilder_image_pipelines_image_recipe_arn" {
 }
 output "imagebuilder_image_pipelines_image_scanning_configuration" {
   description = "Map of image_scanning_configuration values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
-  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => v.image_scanning_configuration if v.image_scanning_configuration != null && length(v.image_scanning_configuration) > 0 }
+  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => one(v.image_scanning_configuration) if v.image_scanning_configuration != null && length(v.image_scanning_configuration) > 0 }
 }
 output "imagebuilder_image_pipelines_image_tests_configuration" {
   description = "Map of image_tests_configuration values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
-  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => v.image_tests_configuration if v.image_tests_configuration != null && length(v.image_tests_configuration) > 0 }
+  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => one(v.image_tests_configuration) if v.image_tests_configuration != null && length(v.image_tests_configuration) > 0 }
 }
 output "imagebuilder_image_pipelines_infrastructure_configuration_arn" {
   description = "Map of infrastructure_configuration_arn values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
@@ -60,7 +60,7 @@ output "imagebuilder_image_pipelines_infrastructure_configuration_arn" {
 }
 output "imagebuilder_image_pipelines_logging_configuration" {
   description = "Map of logging_configuration values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
-  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => v.logging_configuration if v.logging_configuration != null && length(v.logging_configuration) > 0 }
+  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => one(v.logging_configuration) if v.logging_configuration != null && length(v.logging_configuration) > 0 }
 }
 output "imagebuilder_image_pipelines_name" {
   description = "Map of name values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
@@ -76,7 +76,7 @@ output "imagebuilder_image_pipelines_region" {
 }
 output "imagebuilder_image_pipelines_schedule" {
   description = "Map of schedule values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
-  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => v.schedule if v.schedule != null && length(v.schedule) > 0 }
+  value       = { for k, v in aws_imagebuilder_image_pipeline.imagebuilder_image_pipelines : k => one(v.schedule) if v.schedule != null && length(v.schedule) > 0 }
 }
 output "imagebuilder_image_pipelines_status" {
   description = "Map of status values across all imagebuilder_image_pipelines, keyed the same as var.imagebuilder_image_pipelines"
